@@ -1,0 +1,4 @@
+{
+  // El puerto 5500 ya esta ocupado en este ordenador.
+  "liveServer.settings.port": 5501
+}
