@@ -1,0 +1,18 @@
+/*
+  Estos son solo ajustes pequeños para que el contenido respire un poco mas.
+  La estructura principal y los componentes visuales vienen de Bootstrap.
+
+  Bootstrap no esta copiado en este archivo: se carga mediante CDN desde los
+  dos HTML. De esta forma, container, row, card, btn, navbar y table son
+  clases que aporta Bootstrap, mientras que las reglas de abajo son propias.
+*/
+
+/* Limita la anchura del texto largo para que resulte mas facil de leer. */
+article p {
+  line-height: 1.65;
+}
+
+/* Evita que el nombre largo de la navbar se pegue a los enlaces en movil. */
+.navbar .text-white-50 {
+  white-space: normal;
+}
