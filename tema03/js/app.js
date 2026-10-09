@@ -35,7 +35,6 @@ function ejercicio2() {
 
   const conversion3 = Number("12abc");   // espero NaN
   console.log('Number("12abc") →', conversion3, "| typeof:", typeof conversion3);
-
   const conversion4 = Number("");        // predicción inicial propuesta: NaN; sale 0
   console.log('Number("") →', conversion4, "| typeof:", typeof conversion4);
 
@@ -59,6 +58,8 @@ function ejercicio2() {
 }
 
 // Ejercicio 3 · Coerción y comparaciones
+
+
 function ejercicio3() {
   console.log("--- Ejercicio 3 · Coerción y comparaciones ---");
 
