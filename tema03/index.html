@@ -58,44 +58,7 @@ ciudad = "Granada";</code></pre>
     <section class="card mb-4 shadow-sm">
       <div class="card-header d-flex align-items-center gap-2"><span class="badge text-bg-primary">Ejercicio 2</span><h2 class="h5 mb-0">Conversiones explícitas</h2></div>
       <div class="card-body">  
-        <p>Las conversiones se hacen explícitamente con <code>String()</code>, <code>Number()</code> y <code>Boolean()</code>.</p>
-        <pre class="bg-dark text-light p-3 rounded small mb-4"><code>String(123);       // espero "123"
-Number("123");     // espero 123
-Number("12abc");   // espero NaN
-Number("");        // predicción inicial propuesta: NaN
-Number(true);      // espero 1
-Boolean(0);        // espero false
-Boolean("texto");  // espero true
-Boolean("");       // espero false
-String(false);     // espero "false"
-Number("  7  ");   // espero 7</code></pre>
-        <div class="table-responsive"><table class="table table-sm table-striped align-middle mb-2">
-          <thead class="table-primary"><tr><th>Conversión</th><th>Espero</th><th>Sale</th></tr></thead>
-          <tbody>
-            <tr><th><code>String(123)</code></th><td><code>"123"</code></td><td><code>"123"</code> <small class="text-secondary">(string)</small></td></tr>
-            <tr><th><code>Number("123")</code></th><td><code>123</code></td><td><code>123</code> <small class="text-secondary">(number)</small></td></tr>
-            <tr><th><code>Number("12abc")</code></th><td><code>NaN</code></td><td><code>NaN</code> <small class="text-secondary">(number)</small></td></tr>
-            <tr><th><code>Number("")</code></th><td><code>NaN</code></td><td><code>0</code> <span class="badge text-bg-danger">Fallé: revisa tu predicción</span></td></tr>
-            <tr><th><code>Number(true)</code></th><td><code>1</code></td><td><code>1</code> <small class="text-secondary">(number)</small></td></tr>
-            <tr><th><code>Boolean(0)</code></th><td><code>false</code></td><td><code>false</code> <small class="text-secondary">(boolean)</small></td></tr>
-            <tr><th><code>Boolean("texto")</code></th><td><code>true</code></td><td><code>true</code> <small class="text-secondary">(boolean)</small></td></tr>
-            <tr><th><code>Boolean("")</code></th><td><code>false</code></td><td><code>false</code> <small class="text-secondary">(boolean)</small></td></tr>
-            <tr><th><code>String(false)</code></th><td><code>"false"</code></td><td><code>"false"</code> <small class="text-secondary">(string)</small></td></tr>
-            <tr><th><code>Number("  7  ")</code></th><td><code>7</code></td><td><code>7</code> <small class="text-secondary">(number)</small></td></tr>
-          </tbody>
-        </table></div>
-        <p class="small mb-0"><strong>Idea clave:</strong> una cadena vacía convertida a número da <code>0</code>, mientras que una cadena que contiene texto no numérico, como <code>"12abc"</code>, da <code>NaN</code>.</p>
-      </div>
-      <div class="card-footer"><button type="button" class="btn btn-primary" onclick="ejercicio2()"><i class="bi bi-play-fill"></i> Ejecutar ejercicio 2</button> <span class="small text-body-secondary ms-2">Resultado en consola (F12).</span></div>
-    </section>
 
-    <section class="card mb-4 shadow-sm">
-      <div class="card-header d-flex align-items-center gap-2"><span class="badge text-bg-primary">Ejercicio 3</span><h2 class="h5 mb-0">Coerción y comparaciones</h2></div>
-      <div class="card-body">
-        <p>JavaScript puede convertir tipos automáticamente según el operador. Se comparan los mismos valores con igualdad flexible (<code>==</code>) y estricta (<code>===</code>).</p>
-        <pre class="bg-dark text-light p-3 rounded small mb-4"><code>"5" - 2;          // espero 3
-"5" + 2;          // espero "52"
-10 + false;       // espero 10
 "10" - true;      // espero 9
 "hola" + 3;       // espero "hola3" (ejemplo propio)
 "6" / "2";        // espero 3 (ejemplo propio)
