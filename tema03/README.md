@@ -6,13 +6,22 @@ Esta carpeta contiene una página con cuatro ejercicios sobre variables, tipos, 
 
 ## Capturas
 
-Guarda en `capturas/` las cinco capturas reales tomadas en tu equipo, con estos nombres:
+Guarda en `capturas/` las cinco capturas reales tomadas en tu equipo:
 
-- `a-pagina.png`: página completa con el nombre visible y las cuatro tarjetas.
-- `b-consola-ej1.png`: consola después de ejecutar el ejercicio 1.
-- `c-consola-ej2.png`: consola con las conversiones y sus tipos.
-- `d-consola-ej3.png`: consola con las expresiones y las comparaciones.
-- `e-consola-ej4.png`: ficha y comparación de cadenas; incluye el error de reasignar una constante.
+* **a-pagina.png:** página completa con el nombre visible y las cuatro tarjetas.
+  ![Página completa](capturas/a-pagina.png)
+
+* **b-consola-ej1.png:** consola después de ejecutar el ejercicio 1.
+  ![Consola Ejercicio 1](capturas/b-consola-ej1.png)
+
+* **c-consola-ej2.png:** consola con las conversiones y sus tipos.
+  ![Consola Ejercicio 2](capturas/c-consola-ej2.png)
+
+* **d-consola-ej3.png:** consola con las expresiones y las comparaciones.
+  ![Consola Ejercicio 3](capturas/d-consola-ej3.png)
+
+* **e-consola-ej4.png:** ficha y comparación de cadenas; incluye el error de reasignar una constante.
+  ![Consola Ejercicio 4](capturas/e-consola-ej4.png)
 
 ## Reflexión
 
