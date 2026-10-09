@@ -1,0 +1,3 @@
+Sustituye este archivo por las cinco capturas propias exigidas en la tarea:
+a-pagina.png, b-consola-ej1.png, c-consola-ej2.png, d-consola-ej3.png y e-consola-ej4.png.
+No entregues capturas de ejemplo ni de otra persona.
