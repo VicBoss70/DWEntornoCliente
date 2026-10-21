@@ -17,23 +17,23 @@ Cada función deja su rastro en la consola con `console.log()`.
 ## Capturas
 
 ### Página completa
-![Página completa](capturas/[nombre-captura-1])
+![Página completa](capturas/a-pagina.png)
 
 
 ### Vista en el móvil
-![Vista móvil](capturas/[nombre-captura-2])
+![Vista móvil](capturas/b-movil.png)
 
 
 ### Dividir entre 0
-![Dividir entre 0](capturas/[nombre-captura-3])
+![Dividir entre 0](capturas/c-dividir-cero.png)
 
 
 ### Bucles de texto con el 0
-![Bucles con 0](capturas/[nombre-captura-4])
+![Bucles con 0](capturas/d-bucles-cero)
 
 
 ### Bucle con badges
-![Badges](capturas/[nombre-captura-5])
+![Badges](capturas/e-badges.png)
 
 
 ## Reflexión
