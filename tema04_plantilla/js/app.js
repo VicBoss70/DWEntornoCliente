@@ -211,6 +211,7 @@ function bucleFor() {
   let contador = 0;
   for (let i = 1; i <= veces; i++) {
     anadirLinea(`for · repetición ${i} de ${veces}`);
+    console.log(`bucleFor: ${contador} vueltas con veces = ${veces}`);
     contador++;
   }
   anadirLinea(textoTotal(contador));
@@ -224,6 +225,7 @@ function bucleWhile() {
   let i = 1;
   while (i <= veces) {
     anadirLinea(`while · repetición ${i} de ${veces}`);
+    console.log(`bucleWhile: ${contador} vueltas con veces = ${veces}`);
     contador++;
     i++;
   }
@@ -238,6 +240,7 @@ function bucleDoWhile() {
   let i = 1;
   do {
     anadirLinea(`do…while · repetición ${i} de ${veces}`);
+    console.log(`bucleDoWhile: ${contador} vueltas con veces = ${veces}`);
     contador++;
     i++;
   } while (i <= veces);
