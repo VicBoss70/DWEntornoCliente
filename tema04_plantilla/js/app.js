@@ -174,12 +174,27 @@ function cualEsMayor() {
     console.log(`Cuál es mayor: ${n1} === ${n2}`);
   }
 }
-}
+
 
 function parOImpar() {
   // TODO: solo con el número 1. Usa el operador % y el ternario ( condición ? "par" : "impar" ).
   // TODO: si el número tiene decimales, avisa de que no es ni par ni impar.
+  // Dice si el número 1 es par o impar, usando el ternario
+  const n1 = leerNumero("numero1");
+
+  if (Number.isNaN(n1)) {
+    mostrar("Escribe el número 1 antes de comprobarlo.", "danger");
+    console.warn("Par o impar: falta el número 1");
+  } else if (n1 % 1 !== 0) {
+    mostrar(`${n1} tiene decimales: no es ni par ni impar.`, "warning");
+    console.warn(`Par o impar: ${n1} tiene decimales`);
+  } else {
+    const tipo = n1 % 2 === 0 ? "par" : "impar";
+    mostrar(`${n1} es ${tipo}.`);
+    console.log(`Par o impar: ${n1} es ${tipo}`);
+  }
 }
+
 
 
 // ============================================================
