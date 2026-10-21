@@ -263,7 +263,8 @@ function badgesFor() {
     console.warn("badgesFor: número no válido");
   } else {
     for (let i = 1; i <= veces; i++) {
-      anadirBadge(i, "primary");
+      const color = i % 2 === 0 ? "primary" : "secondary";
+      anadirBadge(i, color);
     }
   }
 }
@@ -281,7 +282,8 @@ function badgesWhile() {
   } else {
     let i = 1;
     while (i <= veces) {
-      anadirBadge(i, "primary");
+  const color = i % 2 === 0 ? "primary" : "secondary";
+  anadirBadge(i, color);
       i++;
     }
   }
@@ -298,7 +300,8 @@ function badgesDoWhile() {
   } else {
     let i = 1;
     do {
-      anadirBadge(i, "primary");
+      const color = i % 2 === 0 ? "primary" : "secondary";
+      anadirBadge(i, color);
       i++;
     } while (i <= veces);
   }
