@@ -201,43 +201,48 @@ function parOImpar() {
 // Ejercicio 3 · Bucles con texto
 // El número 1 dice cuántas veces se repite cada bucle
 // ============================================================
-
+function textoTotal(contador) {
+  return `Total: ${contador} ${contador === 1 ? "repetición" : "repeticiones"}`;
+}
 function bucleFor() {
   const veces = leerNumero("numero1");
   limpiarSalida();
 
+  let contador = 0;
   for (let i = 1; i <= veces; i++) {
     anadirLinea(`for · repetición ${i} de ${veces}`);
+    contador++;
   }
+  anadirLinea(textoTotal(contador));
 }
 
-
-
-
 function bucleWhile() {
-  // TODO: lo mismo que bucleFor(), con un while.
-    const veces = leerNumero("numero1");
+  const veces = leerNumero("numero1");
   limpiarSalida();
 
+  let contador = 0;
   let i = 1;
   while (i <= veces) {
     anadirLinea(`while · repetición ${i} de ${veces}`);
+    contador++;
     i++;
   }
+  anadirLinea(textoTotal(contador));
 }
 
 function bucleDoWhile() {
-  // TODO: lo mismo que bucleFor(), con un do…while. Pruébalo con 0 y con un negativo: ¿qué pasa?
-    const veces = leerNumero("numero1");
+  const veces = leerNumero("numero1");
   limpiarSalida();
 
+  let contador = 0;
   let i = 1;
   do {
     anadirLinea(`do…while · repetición ${i} de ${veces}`);
+    contador++;
     i++;
   } while (i <= veces);
+  anadirLinea(textoTotal(contador));
 }
-
 
 // ============================================================
 // Ejercicio 4 · Bucles con badges
