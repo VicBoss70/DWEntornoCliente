@@ -206,19 +206,36 @@ function bucleFor() {
   const veces = leerNumero("numero1");
   limpiarSalida();
 
-  // TODO: si el número falta, tiene decimales o pasa de MAXIMO_REPETICIONES, muestra un error en rojo.
-  // TODO: si no, repite con un for tantas veces como diga «veces». En cada vuelta:
-  //         anadirLinea(`for · repetición ${i} de ${veces}`);
-  //       y cuenta las vueltas en una variable contador.
-  // TODO: al terminar, añade una línea con el total: «Total: 5 repeticiones» o «Total: 1 repetición».
+  for (let i = 1; i <= veces; i++) {
+    anadirLinea(`for · repetición ${i} de ${veces}`);
+  }
 }
+
+
+
 
 function bucleWhile() {
   // TODO: lo mismo que bucleFor(), con un while.
+    const veces = leerNumero("numero1");
+  limpiarSalida();
+
+  let i = 1;
+  while (i <= veces) {
+    anadirLinea(`while · repetición ${i} de ${veces}`);
+    i++;
+  }
 }
 
 function bucleDoWhile() {
   // TODO: lo mismo que bucleFor(), con un do…while. Pruébalo con 0 y con un negativo: ¿qué pasa?
+    const veces = leerNumero("numero1");
+  limpiarSalida();
+
+  let i = 1;
+  do {
+    anadirLinea(`do…while · repetición ${i} de ${veces}`);
+    i++;
+  } while (i <= veces);
 }
 
 
