@@ -19,36 +19,30 @@ Cada función deja su rastro en la consola con `console.log()`.
 ### Página completa
 ![Página completa](capturas/[nombre-captura-1])
 
-[Una o dos líneas: qué se ve, por ejemplo la página con mi nombre en la navbar y una suma hecha.]
 
 ### Vista en el móvil
 ![Vista móvil](capturas/[nombre-captura-2])
 
-[Una o dos líneas: las cards se colocan una debajo de otra en el modo dispositivo de F12.]
 
 ### Dividir entre 0
 ![Dividir entre 0](capturas/[nombre-captura-3])
 
-[Una o dos líneas: el error en rojo en la página y el aviso en la consola.]
 
 ### Bucles de texto con el 0
 ![Bucles con 0](capturas/[nombre-captura-4])
 
-[Una o dos líneas: for y while dan 0 repeticiones y do…while da 1.]
 
 ### Bucle con badges
 ![Badges](capturas/[nombre-captura-5])
 
-[Una o dos líneas: pares e impares de distinto color y el total al final.]
 
 ## Reflexión
 
-[ESCRÍBELA TÚ, 5 a 8 líneas. Borrador de ideas:
 - `for` lo uso cuando sé cuántas vueltas hay, porque junta inicio, condición y paso en una línea.
 - `while` lo uso cuando no sé cuántas vueltas habrá y depende de una condición.
 - `do…while` comprueba la condición al final, así que siempre se ejecuta al menos una vez.
 - Ejemplo con el 0: con 0, `for` y `while` no entraron ni una vez (Total: 0 repeticiones), pero `do…while` hizo una vuelta (Total: 1 repetición).
-- Cuándo usaría do…while: cuando algo tiene que pasar sí o sí una vez, como pedir un dato y repetir si es incorrecto.]
+- Cuándo usaría do…while: cuando algo tiene que pasar sí o sí una vez, como pedir un dato y repetir si es incorrecto.
 
 ## Fuentes
 

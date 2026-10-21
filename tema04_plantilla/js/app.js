@@ -180,6 +180,11 @@ function parOImpar() {
 function textoTotal(contador) {
   return `Total: ${contador} ${contador === 1 ? "repetición" : "repeticiones"}`;
 }
+// true si el número no sirve para repetir: falta, tiene decimales o pasa del máximo
+function repeticionesNoValidas(veces) {
+  return Number.isNaN(veces) || veces % 1 !== 0 || veces > MAXIMO_REPETICIONES;
+}
+
 function bucleFor() {
   const veces = leerNumero("numero1");
   limpiarSalida();
@@ -235,9 +240,11 @@ function badgesFor() {
     mostrar(`Escribe en el número 1 un entero de ${MAXIMO_REPETICIONES} como máximo.`, "danger");
     console.warn("badgesFor: número no válido");
   } else {
+    let contador = 0;
     for (let i = 1; i <= veces; i++) {
       const color = i % 2 === 0 ? "primary" : "secondary";
       anadirBadge(i, color);
+      contador++;
     }
         anadirLinea(textoTotal(contador));
         console.log(`badgesFor: ${contador} vueltas con veces = ${veces}`);
