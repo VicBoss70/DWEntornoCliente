@@ -255,12 +255,51 @@ function badgesFor() {
   // TODO: como bucleFor(), pero cada vuelta añade un badge con el número de la repetición:
   //         anadirBadge(i, "primary");
   // TODO: los pares, de un color y los impares, de otro. Elige el color con el operador ternario.
+    const veces = leerNumero("numero1");
+  limpiarSalida();
+
+  if (repeticionesNoValidas(veces)) {
+    mostrar(`Escribe en el número 1 un entero de ${MAXIMO_REPETICIONES} como máximo.`, "danger");
+    console.warn("badgesFor: número no válido");
+  } else {
+    for (let i = 1; i <= veces; i++) {
+      anadirBadge(i, "primary");
+    }
+  }
 }
+
+
 
 function badgesWhile() {
   // TODO: lo mismo que badgesFor(), con un while.
+    const veces = leerNumero("numero1");
+  limpiarSalida();
+
+  if (repeticionesNoValidas(veces)) {
+    mostrar(`Escribe en el número 1 un entero de ${MAXIMO_REPETICIONES} como máximo.`, "danger");
+    console.warn("badgesWhile: número no válido");
+  } else {
+    let i = 1;
+    while (i <= veces) {
+      anadirBadge(i, "primary");
+      i++;
+    }
+  }
 }
 
 function badgesDoWhile() {
   // TODO: lo mismo que badgesFor(), con un do…while.
+    const veces = leerNumero("numero1");
+  limpiarSalida();
+
+  if (repeticionesNoValidas(veces)) {
+    mostrar(`Escribe en el número 1 un entero de ${MAXIMO_REPETICIONES} como máximo.`, "danger");
+    console.warn("badgesDoWhile: número no válido");
+  } else {
+    let i = 1;
+    do {
+      anadirBadge(i, "primary");
+      i++;
+    } while (i <= veces);
+  }
 }
