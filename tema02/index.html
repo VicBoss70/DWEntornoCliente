@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <!-- Codificacion de caracteres para que se vean bien las tildes. -->
+    <meta charset="utf-8">
+    <!-- Esta etiqueta hace que el diseno se adapte al ancho del movil. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Navegadores y motores | Tema 02</title>
+
+    <!--
+      Bootstrap se carga desde un CDN. Por eso no vemos todo su CSS dentro
+      del proyecto: las clases container, navbar, table, card, btn, etc.
+      vienen de este archivo externo.
+    -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      crossorigin="anonymous"
+    >
+    <!-- Iconos de Bootstrap, incluidos en la plantilla base de la asignatura. -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    >
+
+    <!-- Estos estilos son pequenos ajustes propios sobre Bootstrap. -->
+    <link rel="stylesheet" href="css/estilos.css">
+  </head>
+
+  <body class="bg-light">
+    <!-- La misma barra aparece en las dos paginas de la practica. -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Navegacion principal">
+      <!-- container centra el contenido y limita su anchura. -->
+      <div class="container">
+        <a class="navbar-brand fw-semibold" href="index.html">Tema 02</a>
+
+        <!-- El boton permite abrir el menu en pantallas pequenas. -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#menuPrincipal"
+          aria-controls="menuPrincipal"
+          aria-expanded="false"
+          aria-label="Mostrar navegacion"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- collapse y navbar-collapse hacen que el menu se pliegue en movil. -->
+        <div class="collapse navbar-collapse" id="menuPrincipal">
+          <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+            <li class="nav-item">
+              <span class="nav-link text-white-50">Hector Sascha Garcia Rodriguez</span>
+            </li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Navegadores</a></li>
+            <li class="nav-item"><a class="nav-link" href="interaccion.html">Interaccion</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!--
+      container, row y col-* son clases de la cuadricula de Bootstrap.
+      py-4 y py-md-5 anaden espacio vertical distinto segun la pantalla.
+    -->
+    <main class="container py-4 py-md-5">
+      <!-- Encabezado breve para situar la parte A de la practica. -->
+      <header class="mb-4">
+        <p class="text-uppercase small fw-bold text-primary mb-2">Parte A</p>
+        <h1 class="display-6 fw-bold">Navegadores y motores</h1>
+        <p class="lead mb-0">Una comparacion sencilla de las tecnologias que hacen posible una pagina web.</p>
+      </header>
+
+      <section class="row g-4" aria-labelledby="tabla-navegadores">
+        <div class="col-12">
+          <!-- card crea el panel visual; shadow-sm y border-0 son utilidades Bootstrap. -->
+          <div class="card shadow-sm border-0">
+            <div class="card-body p-0">
+              <div class="p-4 pb-2">
+                <h2 id="tabla-navegadores" class="h4">Principales navegadores</h2>
+                <p class="text-secondary mb-0">La tabla resume el motor que interpreta la pagina y el motor que ejecuta JavaScript.</p>
+              </div>
+
+              <!-- table-responsive evita que la tabla provoque scroll horizontal en el movil. -->
+              <div class="table-responsive">
+                <!-- table, table-striped y table-hover dan formato a la tabla. -->
+                <table class="table table-striped table-hover align-middle mb-0">
+                  <caption class="visually-hidden">Comparacion de navegadores y sus motores</caption>
+                  <thead class="table-dark">
+                    <tr>
+                      <th scope="col">Navegador</th>
+                      <th scope="col">Empresa</th>
+                      <th scope="col">Motor de renderizado</th>
+                      <th scope="col">Motor JavaScript</th>
+                      <th scope="col">¿Chromium?</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><th scope="row">Chrome</th><td>Google</td><td>Blink</td><td>V8</td><td>Si</td></tr>
+                    <tr><th scope="row">Firefox</th><td>Mozilla</td><td>Gecko</td><td>SpiderMonkey</td><td>No</td></tr>
+                    <tr><th scope="row">Safari</th><td>Apple</td><td>WebKit</td><td>JavaScriptCore (Nitro)</td><td>No</td></tr>
+                    <tr><th scope="row">Edge</th><td>Microsoft</td><td>Blink</td><td>V8</td><td>Si</td></tr>
+                    <tr><th scope="row">Opera</th><td>Opera Software</td><td>Blink</td><td>V8</td><td>Si</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- El texto es propio y conecta la tabla con el trabajo de desarrollo. -->
+        <div class="col-12 col-lg-7">
+          <article class="h-100 bg-white rounded-3 shadow-sm p-4">
+            <h2 class="h4">¿Por que se repite tanto Blink?</h2>
+            <p class="mb-0">Muchos navegadores parten de Chromium porque es un proyecto abierto con un motor muy trabajado y compatible con gran parte de la web actual. Compartir Blink y V8 facilita que una pagina se comporte de forma parecida en Chrome, Edge y Opera. Firefox mantiene Gecko y Safari mantiene WebKit, por lo que pueden aparecer diferencias en algunas propiedades o APIs. Para quien desarrolla, esto significa que no basta con probar la pagina en un solo navegador. Hay que comprobar tambien el movil y, como minimo, dos motores distintos. Asi se detectan antes los problemas de estilos, JavaScript o rendimiento.</p>
+          </article>
+        </div>
+
+        <!-- Ejemplo contrastado con Can I Use, como pide el enunciado. -->
+        <div class="col-12 col-lg-5">
+          <article class="card h-100 border-primary shadow-sm">
+            <div class="card-body">
+              <span class="badge text-bg-primary mb-2">Compatibilidad real</span>
+              <h2 class="h4 card-title">Selector CSS :has()</h2>
+              <p class="card-text">Es un selector relacional que permite seleccionar un elemento segun lo que contiene. No funcionaba en Safari antes de la 15.4 y en Firefox estuvo desactivado hasta la version 121, asi que una web que lo use sin alternativa puede verse diferente.</p>
+              <p class="small text-secondary mb-3">Consulta: 02/10/2026</p>
+              <a class="btn btn-outline-primary" href="https://caniuse.com/css-has" target="_blank" rel="noopener noreferrer">Ver datos en Can I Use</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-12">
+          <article class="bg-dark text-white rounded-3 p-4">
+            <h2 class="h4">Mi reflexion</h2>
+            <p class="mb-0">Empezaria probando Chrome o Edge en ordenador y Chrome en Android porque son muy habituales y comparten Blink. Despues comprobaria Firefox para cubrir Gecko y Safari si el proyecto tiene usuarios de Apple. Tambien probaria una pantalla movil, ya que el espacio disponible cambia mucho y una pagina que se ve bien en escritorio puede romperse en un telefono.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="container pb-4 text-secondary small">
+      <!-- El footer no es obligatorio, pero ayuda a cerrar la pagina con sencillez. -->
+      Practica de DWEC - Tema 02
+    </footer>
+
+    <!-- Bootstrap necesita su JavaScript para el menu responsive. -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
