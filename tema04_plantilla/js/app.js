@@ -1,15 +1,3 @@
-/*
-  Tarea 4 · DWEC · [Tu nombre y apellidos]
-  Calculadora y bucles.
-
-  Cómo usar esta plantilla:
-  · Hay una función por botón. Cada una se ejecuta al pulsar su botón de index.html.
-  · sumar() está hecha: es el modelo. Escribe las demás donde pone TODO y, cuando termines, borra el TODO.
-  · Para leer las casillas y escribir el resultado usa las funciones de js/ayudas.js:
-      leerNumero("numero1"), mostrar(texto, color), anadirLinea(texto), anadirBadge(texto, color), limpiarSalida()
-  · Además de en la página, cada función deja su rastro en la consola con console.log().
-  · let y const, nunca var. Compara siempre con ===. Comillas rectas.
-*/
 
 console.log("app.js cargado");
 
@@ -19,11 +7,6 @@ const MAXIMO_REPETICIONES = 20;   // para que un bucle no llene la página
 // ============================================================
 // Ejercicio 1 · Calculadora
 // ============================================================
-
-// El modelo: lee los dos números, comprueba que están y opera
-
-
-//funcion que se encarga de leer los
 
 
 function sumar() {
@@ -67,7 +50,7 @@ function multiplicar() {
     console.log(`Multiplicar: ${n1} - ${n2} = ${resultado}`);
   }
   
-  // TODO: como sumar(), con el operador *
+
 }
 
 function dividir() {
@@ -82,8 +65,7 @@ function dividir() {
     mostrar(`${n1} % ${n2} = ${resultado}`);
     console.log(`Dividir: ${n1} % ${n2} = ${resultado}`);
   }
-  // TODO: como sumar(), con el operador /
-  // TODO: si el número 2 es 0, muestra un error en rojo. Ojo: en JavaScript, 5 / 0 no da error, da Infinity.
+
 }
 function potencia() {
   const n1 = leerNumero("numero1");
@@ -146,8 +128,6 @@ function modulo() {
     console.log(`Módulo: ${n1} % ${n2} = ${resultado}`);
   }
 }
-  // TODO: el resto de la división, con el operador %
-  // TODO: si el número 2 es 0, muestra un error en rojo (5 % 0 da NaN).
 
 
 
@@ -156,7 +136,6 @@ function modulo() {
 // ============================================================
 
 function cualEsMayor() {
-  // TODO: con if, else if y else, di cuál de los dos números es mayor o si son iguales.
   const n1 = leerNumero("numero1");
   const n2 = leerNumero("numero2");
 
@@ -177,9 +156,6 @@ function cualEsMayor() {
 
 
 function parOImpar() {
-  // TODO: solo con el número 1. Usa el operador % y el ternario ( condición ? "par" : "impar" ).
-  // TODO: si el número tiene decimales, avisa de que no es ni par ni impar.
-  // Dice si el número 1 es par o impar, usando el ternario
   const n1 = leerNumero("numero1");
 
   if (Number.isNaN(n1)) {
@@ -252,9 +228,6 @@ function bucleDoWhile() {
 // ============================================================
 
 function badgesFor() {
-  // TODO: como bucleFor(), pero cada vuelta añade un badge con el número de la repetición:
-  //         anadirBadge(i, "primary");
-  // TODO: los pares, de un color y los impares, de otro. Elige el color con el operador ternario.
     const veces = leerNumero("numero1");
   limpiarSalida();
 
@@ -266,6 +239,8 @@ function badgesFor() {
       const color = i % 2 === 0 ? "primary" : "secondary";
       anadirBadge(i, color);
     }
+        anadirLinea(textoTotal(contador));
+        console.log(`badgesFor: ${contador} vueltas con veces = ${veces}`);
   }
 }
 
@@ -286,6 +261,8 @@ function badgesWhile() {
   anadirBadge(i, color);
       i++;
     }
+     anadirLinea(textoTotal(contador));
+    console.log(`badgesWhile: ${contador} vueltas con veces = ${veces}`);
   }
 }
 
@@ -304,5 +281,7 @@ function badgesDoWhile() {
       anadirBadge(i, color);
       i++;
     } while (i <= veces);
+    anadirLinea(textoTotal(contador));
+    console.log(`badgesDoWhile: ${contador} vueltas con veces = ${veces}`);
   }
 }
