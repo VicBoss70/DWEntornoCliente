@@ -113,6 +113,39 @@ function modulo() {
   }
 }
 
+function dividir() {
+  const n1 = leerNumero("numero1");
+  const n2 = leerNumero("numero2");
+
+  if (Number.isNaN(n1) || Number.isNaN(n2)) {
+    mostrar("Escribe los dos números antes de operar.", "danger");
+    console.warn("Dividir: falta algún número");
+  } else if (n2 === 0) {
+    mostrar("No se puede dividir entre 0.", "danger");
+    console.warn("Dividir: el número 2 es 0");
+  } else {
+    const resultado = n1 / n2;
+    mostrar(`${n1} / ${n2} = ${resultado}`);
+    console.log(`Dividir: ${n1} / ${n2} = ${resultado}`);
+  }
+}
+
+function modulo() {
+  const n1 = leerNumero("numero1");
+  const n2 = leerNumero("numero2");
+
+  if (Number.isNaN(n1) || Number.isNaN(n2)) {
+    mostrar("Escribe los dos números antes de operar.", "danger");
+    console.warn("Módulo: falta algún número");
+  } else if (n2 === 0) {
+    mostrar("No se puede calcular el resto de una división entre 0.", "danger");
+    console.warn("Módulo: el número 2 es 0");
+  } else {
+    const resultado = n1 % n2;
+    mostrar(`${n1} % ${n2} = ${resultado}`);
+    console.log(`Módulo: ${n1} % ${n2} = ${resultado}`);
+  }
+}
   // TODO: el resto de la división, con el operador %
   // TODO: si el número 2 es 0, muestra un error en rojo (5 % 0 da NaN).
 
@@ -124,6 +157,23 @@ function modulo() {
 
 function cualEsMayor() {
   // TODO: con if, else if y else, di cuál de los dos números es mayor o si son iguales.
+  const n1 = leerNumero("numero1");
+  const n2 = leerNumero("numero2");
+
+  if (Number.isNaN(n1) || Number.isNaN(n2)) {
+    mostrar("Escribe los dos números antes de comparar.", "danger");
+    console.warn("Cuál es mayor: falta algún número");
+  } else if (n1 > n2) {
+    mostrar(`${n1} es mayor que ${n2}.`);
+    console.log(`Cuál es mayor: ${n1} > ${n2}`);
+  } else if (n1 < n2) {
+    mostrar(`${n2} es mayor que ${n1}.`);
+    console.log(`Cuál es mayor: ${n1} < ${n2}`);
+  } else {
+    mostrar(`${n1} y ${n2} son iguales.`, "info");
+    console.log(`Cuál es mayor: ${n1} === ${n2}`);
+  }
+}
 }
 
 function parOImpar() {
