@@ -26,11 +26,21 @@ function aplicarCambios() {
   primero.textContent = "Texto modificado por JavaScript";
 
   const segundo = documento.querySelector(".segundo");
-  if (segundo ¡=== null) 
+  if (segundo !== null) {
 
-  // TODO: el segundo párrafo, con querySelector y su clase (.segundo): resáltalo con la clase "bg-warning-subtle".
-  // TODO: el tercero, con querySelectorAll("#contenido p") y su posición en la lista: ponlo en rojo con "text-danger".
-  // TODO: un console.log() que diga que se han aplicado los cambios.
+  segundo.classList.add("bg-warning-subtle")
+  }
+  
+
+
+  const parrafos = document.querySelectorAll("#contenido p")
+  const tercero = parrafos[2];
+  if (tercero !== undefined) {
+    tercero.classList.add("textdanger");
+
+    console.log("aplicarCambios: cambios aplicados a los tres párrafos");
+  }
+
 }
 
 
@@ -39,37 +49,55 @@ function aplicarCambios() {
 // ============================================================
 
 function anadirParrafo() {
-  // TODO: crea un <p> con document.createElement().
-  // TODO: dale el texto «Párrafo nuevo N», donde N es el número de párrafos que habrá en #contenido
-  //       (pista: document.querySelector("#contenido").children.length).
-  // TODO: cuélgalo al final de #contenido con append().
+  const contenido = document.querySelector("#contenido");
+  const parrafo = document.createElement("p");
+
+  parrafo.textContent = `Párrafo nuevo ${contenido.children.lenght + 1}`;
+  contenido.append(parrafo);
+
+  document.querySelector("#aviso2").classList.add("d-none");
+  console.log(`anadirParrafo: ahora hay ${contenido.children.lenght} párrafos`)
+
 }
 
 function eliminarUltimo() {
-  // TODO: busca el último párrafo de #contenido (lastElementChild).
-  // TODO: si es null (ya no queda ninguno), muestra el aviso #aviso2 quitándole la clase "d-none".
+
   //       Si no, bórralo con remove().
+   const contenido = document.querySelector("#contenido");
+  const ultimo = contenido.lastElementChild;
+
+  if (ultimo === null) {
+    document.querySelector("#aviso2").classList.remove("d-none");
+    console.warn("eliminarUltimo: no quedan párrafos que eliminar");
+  } else {
+    ultimo.remove();
+    console.log(`eliminarUltimo: quedan ${contenido.children.length} párrafos`);
+  }
 }
+
 
 
 // ============================================================
 // Ejercicio 3 · Resaltar al pasar el ratón
 // ============================================================
 
+// Añade a cada párrafo los eventos de entrar y salir con el ratón
 function activarResaltado() {
   const parrafos = document.querySelectorAll("#contenido p");
 
   for (const parrafo of parrafos) {
-    // addEventListener("mouseenter", ...) ejecuta la función cuando el ratón entra en el párrafo.
-    // Los eventos los veremos a fondo en el tema 9: de momento, copia este modelo.
+    // Al entrar el ratón, se pone gris
     parrafo.addEventListener("mouseenter", function () {
       parrafo.classList.add("bg-body-secondary");
     });
 
-    // TODO: lo mismo con "mouseleave" (cuando el ratón sale) para quitar la clase.
+    // Al salir el ratón, se quita el gris
+    parrafo.addEventListener("mouseleave", function () {
+      parrafo.classList.remove("bg-body-secondary");
+    });
   }
 
-  // TODO: un console.log() que diga en cuántos párrafos se ha activado (parrafos.length).
+  console.log(`activarResaltado: eventos activados en ${parrafos.length} párrafos`);
 }
 
 
@@ -78,14 +106,38 @@ function activarResaltado() {
 // ============================================================
 
 function cambiarTexto() {
-  // TODO: lee lo escrito en #nuevoTexto con value y quítale los espacios de los extremos con trim().
-  // TODO: si está vacío, muestra el error #error4 (quítale "d-none") y no cambies nada.
-  // TODO: si no, pon ese texto en el primer párrafo de #contenido con textContent y oculta el error.
+
+    const texto = document.querySelector("#nuevoTexto").value.trim();
+  const error = document.querySelector("#error4");
+  const primero = document.querySelector("#contenido p");
+
+  if (texto === "") {
+    error.classList.remove("d-none");
+    console.warn("cambiarTexto: la casilla está vacía");
+  } else if (primero === null) {
+    console.warn("cambiarTexto: no queda ningún párrafo");
+  } else {
+    primero.textContent = texto;
+    error.classList.add("d-none");
+    console.log(`cambiarTexto: el primer párrafo ahora dice «${texto}»`);
+  }
 }
 
 function cambiarConHtml() {
-  // TODO: lo mismo que cambiarTexto(), pero con innerHTML.
-  //       Prueba las dos con <b>hola</b> y explica en el README qué diferencia ves y por qué es peligroso.
+ const texto = document.querySelector("#nuevoTexto").value.trim();
+  const error = document.querySelector("#error4");
+  const primero = document.querySelector("#contenido p");
+
+  if (texto === "") {
+    error.classList.remove("d-none");
+    console.warn("cambiarConHtml: la casilla está vacía");
+  } else if (primero === null) {
+    console.warn("cambiarConHtml: no queda ningún párrafo");
+  } else {
+    primero.innerHTML = texto;
+    error.classList.add("d-none");
+    console.log(`cambiarConHtml: el primer párrafo ahora tiene el HTML «${texto}»`);
+  }
 }
 
 
@@ -94,19 +146,59 @@ function cambiarConHtml() {
 // ============================================================
 
 function anadirTarea() {
-  // TODO: lee el texto de #tareaInput (value + trim). Si está vacío, muestra un mensaje en #error5.
-  // TODO: si no, crea un <li class="list-group-item"> con dos elementos dentro:
-  //         · un <input> de tipo "checkbox" con la clase "form-check-input",
-  //         · un <span> con el texto de la tarea (textContent).
-  //       Cuelga el <li> de #listaTareas y vacía la casilla (value = "").
-  // TODO: actualiza #totalTareas con el número de <li> que hay en la lista.
+
+   const entrada = document.querySelector("#tareaInput");
+  const texto = entrada.value.trim();
+  const error = document.querySelector("#error5");
+
+  if (texto === "") {
+    error.textContent = "Escribe una tarea antes de añadirla.";
+    error.classList.remove("d-none");
+    console.warn("anadirTarea: la casilla está vacía");
+  } else {
+    const elemento = document.createElement("li");
+    elemento.classList.add("list-group-item");
+
+    const casilla = document.createElement("input");
+    casilla.type = "checkbox";
+    casilla.classList.add("form-check-input", "me-2");
+
+    const nombre = document.createElement("span");
+    nombre.textContent = texto;
+
+    elemento.append(casilla, nombre);
+    document.querySelector("#listaTareas").append(elemento);
+
+    entrada.value = "";
+    error.classList.add("d-none");
+    actualizarTotal();
+    console.log(`anadirTarea: añadida «${texto}»`);
+    
+        // Cuenta los <li> de la lista y lo escribe en el contador
+function actualizarTotal() {
+  const total = document.querySelectorAll("#listaTareas li").length;
+  document.querySelector("#totalTareas").textContent = total;
+}
+  }
 }
 
 function borrarCompletadas() {
-  // TODO: selecciona las casillas marcadas: document.querySelectorAll("#listaTareas input:checked").
-  // TODO: si no hay ninguna, avisa en #error5. Si hay, recórrelas con for…of y borra el <li> de cada una
-  //       (el <li> es el padre de la casilla: parentElement).
-  // TODO: actualiza #totalTareas.
+    const marcadas = document.querySelectorAll("#listaTareas input:checked");
+  const error = document.querySelector("#error5");
+
+  if (marcadas.length === 0) {
+    error.textContent = "No hay ninguna tarea marcada para borrar.";
+    error.classList.remove("d-none");
+    console.warn("borrarCompletadas: no hay tareas marcadas");
+  } else {
+    for (const casilla of marcadas) {
+      // El <li> es el padre de la casilla
+      casilla.parentElement.remove();
+    }
+    error.classList.add("d-none");
+    actualizarTotal();
+    console.log(`borrarCompletadas: borradas ${marcadas.length} tareas`);
+  }
 }
 
 
@@ -115,13 +207,34 @@ function borrarCompletadas() {
 // ============================================================
 
 function verDatosVentana() {
+    document.querySelector("#datoPantalla").textContent = `${screen.width} × ${screen.height} px`;
+  document.querySelector("#datoUrl").textContent = location.href;
+  document.querySelector("#datoIdioma").textContent = navigator.language;
   // El modelo: el tamaño de la ventana
   const ancho = window.innerWidth;
   const alto = window.innerHeight;
   document.querySelector("#datoVentana").textContent = `${ancho} × ${alto} px`;
 
-  // TODO: con if / else if, el punto de corte de Bootstrap según el ancho: xs (< 576), sm (≥ 576), md (≥ 768),
-  //       lg (≥ 992), xl (≥ 1200) y xxl (≥ 1400). Escríbelo en #datoPunto.
-  // TODO: el tamaño de la pantalla (screen.width y screen.height) en #datoPantalla.
-  // TODO: la URL (location.href) en #datoUrl y el idioma del navegador (navigator.language) en #datoIdioma.
+    let punto;
+  if (ancho < 576) {
+    punto = "xs (menos de 576 px)";
+  } else if (ancho < 768) {
+    punto = "sm (de 576 a 767 px)";
+  } else if (ancho < 992) {
+    punto = "md (de 768 a 991 px)";
+  } else if (ancho < 1200) {
+    punto = "lg (de 992 a 1199 px)";
+  } else if (ancho < 1400) {
+    punto = "xl (de 1200 a 1399 px)";
+  } else {
+    punto = "xxl (desde 1400 px)";
+  }
+  document.querySelector("#datoPunto").textContent = punto;
+
+  document.querySelector("#datoPantalla").textContent = `${screen.width} × ${screen.height} px`;
+  document.querySelector("#datoUrl").textContent = location.href;
+  document.querySelector("#datoIdioma").textContent = navigator.language;
+
+  console.log(`verDatosVentana: ventana ${ancho} × ${alto}, punto de corte ${punto}`);
+
 }
