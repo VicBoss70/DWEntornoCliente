@@ -226,6 +226,12 @@ function ordenarPorPrecio() {
 
 function filtrarCaros() {
   // TODO: con filter(), los productos de más de 50 €. Píntalos y escribe en #mensaje3 cuántos son.
+   const caros = productos.filter(function (producto) {
+    return producto.precio > 50;
+  });
+  pintarProductos(caros);
+  document.querySelector("#mensaje3").textContent = `Hay ${caros.length} productos de más de 50 €.`;
+  console.log("Ejercicio 3: filter de más de 50 €", caros);
 }
 
 function buscarProducto() {
