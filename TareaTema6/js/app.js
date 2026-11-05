@@ -1,5 +1,5 @@
 /*
-  Tarea 6 · DWEC · [Tu nombre y apellidos]
+  Tarea 6 · DWEC · [Hector Sascha Garcia Rodriguez]
   Objetos y arrays.
 
   Cómo usar esta plantilla:
@@ -35,7 +35,13 @@ function comoTexto(lista) {
 // TODO: añádele el método presentarse(), que devuelve una frase con this.nombre, this.apellidos, this.edad y this.curso.
 //       Por ejemplo: «Soy [nombre] [apellidos], tengo [edad] años y estudio [curso].»
 const estudiante = {
-
+nombre: "Hector Sascha",
+  apellidos: "Garcia Rodriguez",
+  edad: 18,
+  curso: "2.º DAW",
+  presentarse: function () {
+    return `Soy ${this.nombre} ${this.apellidos}, tengo ${this.edad} años y estudio ${this.curso}.`;
+  }
 };
 
 function verFicha() {
@@ -45,6 +51,26 @@ function verFicha() {
   //       y lee cada valor con corchetes: estudiante[clave].
   // TODO: debajo, un <p> con la frase de estudiante.presentarse().
   // TODO: console.log() del objeto entero.
+  const salida = document.querySelector("#salida1");
+  salida.textContent = "";
+
+  const lista = document.createElement("ul");
+  lista.classList.add("list-group", "mb-2");
+
+  // Las claves van en un array y el valor se lee con corchetes
+  const claves = ["nombre", "apellidos", "edad", "curso"];
+  claves.forEach(function (clave) {
+    const li = document.createElement("li");
+    li.classList.add("list-group-item");
+    li.textContent = `${clave}: ${estudiante[clave]}`;
+    lista.append(li);
+  });
+const frase = document.createElement("p");
+  frase.classList.add("fst-italic", "mb-0");
+  frase.textContent = estudiante.presentarse();
+
+  salida.append(lista, frase);
+  console.log("Ejercicio 1: ficha pintada", estudiante);
 }
 
 function cumplirAnios() {
