@@ -75,11 +75,17 @@ const frase = document.createElement("p");
 
 function cumplirAnios() {
   // TODO: suma 1 a la edad del estudiante y vuelve a pintar la ficha (llama a verFicha()).
+  estudiante.edad = estudiante.edad + 1;
+  console.log("Ejercicio 1: cumplo años, ahora tengo", estudiante.edad);
+  verFicha();
 }
 
 function quitarCurso() {
   // TODO: borra la propiedad curso con delete y vuelve a pintar la ficha.
   //       Fíjate en lo que sale ahora en el curso y explícalo en el README.
+  delete estudiante.curso;
+  console.log("Ejercicio 1: curso borrado", estudiante);
+  verFicha();
 }
 
 
