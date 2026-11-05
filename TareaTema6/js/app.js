@@ -304,6 +304,24 @@ function mostrarNotas() {
   // TODO: vacía #notas y pon un badge (<span class="badge">) por nota: verde (text-bg-success) si es de 5 o más,
   //       rojo (text-bg-danger) si no.
   // TODO: en #media, «Media de N notas: X» con dos decimales (toFixed(2)), o «Todavía no hay notas.».
+    const contenedor = document.querySelector("#notas");
+  contenedor.textContent = "";
+
+  alumno.notas.forEach(function (nota) {
+    const badge = document.createElement("span");
+    badge.classList.add("badge", "me-1", nota >= 5 ? "text-bg-success" : "text-bg-danger");
+    badge.textContent = nota;
+    contenedor.append(badge);
+
+});
+
+const media = document.querySelector("#media");
+  if (alumno.notas.length === 0) {
+    media.textContent = "Todavía no hay notas.";
+  } else {
+    media.textContent = `Media de ${alumno.notas.length} notas: ${alumno.media().toFixed(2)}`;
+  }
+  console.log("Ejercicio 4: notas", comoTexto(alumno.notas));
 }
 
 function anadirNota() {
@@ -311,10 +329,36 @@ function anadirNota() {
   //       Ojo: Number("") vale 0, así que esta comprobación va antes de convertir.
   // TODO: convierte el valor con Number() y llama a alumno.anadirNota(). Si devuelve false, muestra el error.
   // TODO: si ha ido bien, oculta el error, vacía la casilla y llama a mostrarNotas().
+  const casilla = document.querySelector("#nota");
+  const error = document.querySelector("#error4");
+
+  // La casilla vacía se comprueba antes de convertir, porque Number("") vale 0
+  if (casilla.value.trim() === "") {
+    error.textContent = "Escribe una nota antes de añadirla.";
+    error.classList.remove("d-none");
+    console.warn("Ejercicio 4: casilla vacía");
+    return;
+  }
+  const nota = Number(casilla.value);
+  if (!alumno.anadirNota(nota)) {
+    error.textContent = "La nota tiene que ser un número entre 0 y 10.";
+    error.classList.remove("d-none");
+    console.warn("Ejercicio 4: nota no válida", nota);
+    return;
+  }
+
+  error.classList.add("d-none");
+  casilla.value = "";
+  mostrarNotas();
 }
+
 
 function borrarNotas() {
   // TODO: deja alumno.notas vacío y vuelve a pintar.
+  alumno.notas = [];
+  document.querySelector("#error4").classList.add("d-none");
+  console.log("Ejercicio 4: notas borradas");
+  mostrarNotas();
 }
 
 mostrarNotas();
