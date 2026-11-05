@@ -86,6 +86,7 @@ function quitarCurso() {
   delete estudiante.curso;
   console.log("Ejercicio 1: curso borrado", estudiante);
   verFicha();
+  
 }
 
 
@@ -135,6 +136,17 @@ function anadirColor() {
 function quitarUltimo() {
   // TODO: si la lista está vacía, avisa con avisar2() y no hagas nada más.
   // TODO: si no, saca el último con pop(), vuelve a pintar la lista y di en la consola qué color ha salido.
+    if (colores.length === 0) {
+    avisar2("No quedan colores que quitar.");
+    console.warn("Ejercicio 2: pop con la lista vacía");
+    return;
+  }
+
+  const quitado = colores.pop();
+  document.querySelector("#aviso2").classList.add("d-none");
+  mostrarColores();
+  console.log("Ejercicio 2: pop →", quitado, comoTexto(colores));
+  
 }
 
 function quitarPrimero() {
