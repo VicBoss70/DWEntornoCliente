@@ -454,19 +454,54 @@ let ciudades = [...ciudadesOriginal];   // una copia: splice cambia ciudades y a
 function mostrarCiudades() {
   // TODO: vacía #ciudades y pon un badge por ciudad con su posición: «0 · Granada», «1 · Sevilla»...
   //       Pista: forEach le pasa a tu función dos datos: function (ciudad, posicion) { ... }.
+    const contenedor = document.querySelector("#ciudades");
+  contenedor.textContent = "";
+
+  ciudades.forEach(function (ciudad, posicion) {
+    const badge = document.createElement("span");
+    badge.classList.add("badge", "text-bg-light", "border", "me-1", "mb-1");
+    badge.textContent = `${posicion} · ${ciudad}`;
+    contenedor.append(badge);
+  });
+  console.log("Ejercicio 6: ciudades", comoTexto(ciudades));
 }
 
 function verSlice() {
   // TODO: guarda ciudades.slice(2, 5) y escribe en #salida6 qué devuelve y cuántas ciudades siguen en el array.
+  const trozo = ciudades.slice(2, 5);
+
+  escribirLineas("#salida6", [
+    "slice(2, 5) devuelve " + comoTexto(trozo),
+    `ciudades sigue teniendo ${ciudades.length} elementos: no ha cambiado`
+  ]);
+  console.log("Ejercicio 6: slice", comoTexto(trozo));
 }
 
 function hacerSplice() {
   // TODO: si quedan menos de 3 ciudades, avisa en #salida6 de que hay que restaurar y no hagas nada más.
   // TODO: si no, ciudades.splice(2, 2): escribe en #salida6 qué devuelve y cuántas quedan, y vuelve a pintar.
+   if (ciudades.length < 3) {
+    escribirLineas("#salida6", ["Quedan menos de 3 ciudades: pulsa «Restaurar»."]);
+    console.warn("Ejercicio 6: splice con menos de 3 ciudades");
+    return;
 }
+const quitadas = ciudades.splice(2, 2);
+  mostrarCiudades();
+
+  escribirLineas("#salida6", [
+    "splice(2, 2) devuelve " + comoTexto(quitadas),
+    `ciudades ahora tiene ${ciudades.length} elementos: sí ha cambiado`
+  ]);
+  console.log("Ejercicio 6: splice", comoTexto(quitadas));
+}
+
 
 function restaurarCiudades() {
   // TODO: vuelve a copiar ciudadesOriginal en ciudades y pinta.
+  ciudades = [...ciudadesOriginal];
+  mostrarCiudades();
+  escribirLineas("#salida6", ["Ciudades restauradas: vuelven a ser " + ciudades.length + "."]);
+  console.log("Ejercicio 6: restauradas");
 }
 
 function buscarCiudad() {
