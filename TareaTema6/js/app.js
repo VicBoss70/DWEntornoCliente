@@ -370,13 +370,43 @@ mostrarNotas();
 
 const numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
+// Escribe varias líneas de texto en un elemento, una debajo de otra
+function escribirLineas(selector, lineas) {
+  const contenedor = document.querySelector(selector);
+  contenedor.textContent = "";
+
+  lineas.forEach(function (texto) {
+    const linea = document.createElement("div");
+    linea.textContent = texto;
+    contenedor.append(linea);
+  });
+}
+
 function verDobles() {
   // TODO: con map(), un array nuevo con el doble de cada número.
   // TODO: escribe en #salida5 el resultado y, debajo, numeros (para que se vea que no ha cambiado).
+    const dobles = numeros.map(function (n) {
+    return n * 2;
+  });
+
+  escribirLineas("#salida5", [
+    "map → " + comoTexto(dobles),
+    "numeros → " + comoTexto(numeros)
+  ]);
+  console.log("Ejercicio 5: map", comoTexto(dobles));
 }
 
 function verPares() {
   // TODO: con filter(), los números pares (n % 2 === 0). Escríbelos en #salida5 como en verDobles().
+    const pares = numeros.filter(function (n) {
+    return n % 2 === 0;
+  });
+
+  escribirLineas("#salida5", [
+    "filter → " + comoTexto(pares),
+    "numeros → " + comoTexto(numeros)
+  ]);
+  console.log("Ejercicio 5: filter", comoTexto(pares));
 }
 
 function verSuma() {
