@@ -151,6 +151,16 @@ function quitarUltimo() {
 
 function quitarPrimero() {
   // TODO: lo mismo que quitarUltimo(), pero sacando el primero con shift().
+  if (colores.length === 0) {
+    avisar2("No quedan colores que quitar.");
+    console.warn("Ejercicio 2: shift con la lista vacía");
+    return;
+  }
+
+  const quitado = colores.shift();
+  document.querySelector("#aviso2").classList.add("d-none");
+  mostrarColores();
+  console.log("Ejercicio 2: shift →", quitado, comoTexto(colores));
 }
 
 mostrarColores();   // pinta los tres colores de partida nada más cargar
