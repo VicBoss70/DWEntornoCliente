@@ -275,7 +275,7 @@ class Alumno {
 
 
   presentarse() {
-    return `${this.nombre()}, de ${this.curso}`;
+    return `${this.nombre}, de ${this.curso}`;
   }
 
 }
@@ -298,7 +298,7 @@ const alumnoUno = new Alumno("Héctor García", "2.º DAW");
 alumnoUno.anadirNota(9);
 alumnoUno.anadirNota(7);
 
-const alumnoDos = new AlumnoFCT("Adrián Barbos", "2.º DAW", "Medac");
+const alumnoDos = new AlumnoFCT("Adrian Barbos", "2.º DAW", "GranadaMotor");
 alumnoDos.anadirNota(8);
 alumnoDos.anadirNota(6.5);
 

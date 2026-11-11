@@ -1,58 +1,52 @@
 # Tarea 7 · Funciones, flechas y clases
 
-**Autor:** [Tu nombre y apellidos] · Desarrollo Web en Entorno Cliente (DWEC) · 2.º DAW · Curso 2026-27
+**Autor:** Hector Sascha Garcia Rodriguez · Desarrollo Web en Entorno Cliente (DWEC) · 2.º DAW · Curso 2026-27
 
-> **Plantilla de la tarea 7.** Cómo usarla:
->
-> 1. Copia esta carpeta en tu repositorio de DWEC y cámbiale el nombre a `tema07`.
-> 2. `index.html` ya está maquetado: una card por ejercicio (el 6 tiene dos). No cambies los `id` ni el `onclick` de los botones.
-> 3. `js/app.js` trae una función por botón con `TODO`. Ya están hechas `pintarLista()`, `formatearEuros()`, `pintarAlumnos()` y un modelo en los ejercicios 3, 4 y 6.
-> 4. Flechas en todos los callbacks y nunca una flecha como método. Las funciones de los botones, con `function`.
-> 5. Sustituye las imágenes de `capturas/` por las tuyas, **con el mismo nombre**.
-> 6. Todo lo que va entre [corchetes] es un hueco: cámbialo por lo tuyo. Al terminar, borra este aviso.
-
-[Una o dos líneas: qué hay en esta carpeta y cómo se ve. Por ejemplo: abrir la carpeta en VS Code, pulsar **Go Live** y probar los botones con la consola abierta (F12).]
+En esta carpeta está la página «Funciones, flechas y clases», con seis ejercicios. Todo el JavaScript está en `js/app.js`: las funciones de los botones se escriben con `function`, los callbacks con flecha y las clases con la forma corta de los métodos. Los resultados se pintan con `createElement`, `textContent` y `append`, sin `innerHTML`.
 
 ## Capturas
 
 ### a) La página recién cargada
+![Página recién cargada](capturas/a-pagina.png)
 
-<img src="capturas/a-pagina.png" alt="La página recién cargada con mi nombre en la navbar" width="600">
+Al cargar se ve mi nombre en la navbar, los dos alumnos de partida y los contadores a cero.
 
-[Qué se ve nada más cargar: tu nombre y los dos alumnos de partida.]
+### b) Precio con descuento y un botón de las películas
+![Precio y películas](capturas/b-ej1-ej2.png)
 
-### b) Ejercicios 1 y 2: el precio y las películas
+Un producto de 80 € con IVA del 10 % y un 15 % de descuento da 74.80 €. Al lado, las películas ordenadas por año con `sort` sobre una copia.
 
-<img src="capturas/b-ej1-ej2.png" alt="El desglose del precio y una lista de películas" width="600">
+### c) Mi callback y los contadores
+![Callback y contadores](capturas/c-ej3-ej4.png)
 
-[Un precio con descuento y uno de los botones de las películas. Qué hace calcularPrecio() y qué hace mostrarPrecio().]
+`transformar` da el mismo resultado que `map` y `numeros` no cambia. Los contadores, tras pulsarlos, van por separado: 4 y 15.
 
-### c) Ejercicios 3 y 4: tu callback y los contadores
+### d) Los alumnos
+![Alumnos](capturas/d-ej5-clases.png)
 
-![El resultado de transformar y los dos contadores](capturas/c-ej3-ej4.png)
+Cuatro alumnos, dos de ellos en prácticas (con la etiqueta FCT), cada uno con su media.
 
-[Qué hace transformar() por dentro y por qué cada contador lleva su propia cuenta.]
+### e) Fechas e iniciales
+![Fechas e iniciales](capturas/e-ej6-fechas-textos.png)
 
-### d) Ejercicio 5: los alumnos
+Los días hasta una fecha, con el nombre del día en español, y las iniciales de un nombre con espacios dobles, que se ignoran gracias al `filter`.
 
-![Las tarjetas de los alumnos](capturas/d-ej5-clases.png)
+## El closure del ejercicio 4
 
-[Al menos cuatro alumnos, alguno en prácticas. Cómo decide tu código si crea un Alumno o un AlumnoFCT.]
-
-### e) Ejercicio 6: fechas y textos
-
-![Los días que faltan para una fecha y unas iniciales](capturas/e-ej6-fechas-textos.png)
-
-[Qué fecha has probado, cuántos días salen y por qué redondeas.]
+`crearContador` guarda `cuenta` dentro de la función y devuelve otra función que sigue pudiendo usarla, aunque `crearContador` ya haya terminado. Cada llamada crea su propia `cuenta`, por eso el de 1 en 1 y el de 5 en 5 no se mezclan. Si escribo `cuenta` en la consola da error, porque la variable solo existe dentro del closure.
 
 ## Reflexión
 
-[De 5 a 8 líneas: ¿qué cambia al pasar un callback de function a flecha? ¿Cuándo hace falta el return? ¿Por qué un método no se escribe con flecha? Pon un ejemplo de tu propio código.]
+Al pasar un callback de `function` a flecha cambia la sintaxis: `peliculas.filter((pelicula) => pelicula.duracion > 120)` hace lo mismo que la versión con `function` y `return`, pero más corta. Si el cuerpo es solo una expresión no hacen falta llaves ni `return`, que se devuelve solo. Si uso llaves, como en `crearContador`, el `return` es obligatorio. Los métodos de una clase, como `media()` de `Alumno`, no se escriben con flecha porque una flecha no tiene su propio `this`, sino el de fuera, y `this.notas` dejaría de apuntar al alumno.
 
 ## Fuentes
 
-- [Título de la página](https://enlace-a-la-fuente)
+- MDN, [Funciones flecha](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
+- MDN, [Closures](https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Closures)
+- MDN, [Clases](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Classes)
+- MDN, [Date](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Date)
+- MDN, [padStart](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/String/padStart)
 
 ## Uso de IA
 
-[Si has usado IA: qué herramienta, para qué y qué hiciste después con su respuesta. Si no la has usado, borra este apartado.]
+He usado Claude (asistente de IA de Anthropic) para organizar los commits, obtener ejemplos de código y preparar el borrador de este README. Después escribí el código en mi proyecto, probé cada botón con la consola abierta, corregí los errores que me salieron y hice yo las capturas.
