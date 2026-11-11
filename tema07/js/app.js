@@ -478,13 +478,19 @@ function mostrarDias() {
 //       Encadena trim, split(" "), filter (para quitar las palabras vacías si hay espacios dobles),
 //       map (la primera letra de cada palabra, en mayúscula) y join("").
 function iniciales(nombreCompleto) {
-
+  return nombreCompleto
+    .trim()
+    .split(" ")
+    .filter((palabra) => palabra !== "")
+    .map((palabra) => palabra[0].toUpperCase())
+    .join("");
 }
 
 // TODO: crearUsuario(nombreCompleto) devuelve las iniciales en minúsculas y tres cifras al azar, de 000 a 999:
 //       «lmo042». Pista: Math.random, Math.floor y padStart(3, "0").
 function crearUsuario(nombreCompleto) {
-
+  const azar = Math.floor(Math.random() * 1000);
+  return iniciales(nombreCompleto).toLowerCase() + String(azar).padStart(3, "0");
 }
 
 function mostrarIniciales() {
