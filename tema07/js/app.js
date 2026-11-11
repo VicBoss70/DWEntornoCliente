@@ -428,7 +428,11 @@ pintarAlumnos();
 //       Pon hoy a medianoche (hoy.setHours(0, 0, 0, 0)), resta las fechas, divide entre los milisegundos
 //       de un día y redondea con Math.round: con el cambio de hora, la resta no siempre da un número entero.
 function diasHasta(fecha) {
-
+  const hoy = new Date();
+  hoy.setHours(0, 0, 0, 0);
+  const milisegundosPorDia = 1000 * 60 * 60 * 24;
+  // Math.round: con el cambio de hora la resta no siempre da un entero
+  return Math.round((fecha - hoy) / milisegundosPorDia);
 }
 
 function mostrarDias() {
@@ -437,12 +441,34 @@ function mostrarDias() {
 
   if (valor === "") {
     salida.textContent = "Elige una fecha.";
+    console.warn("Ejercicio 6: no hay fecha");
     return;
   }
 
   // Ya está hecho: de "2026-12-25" a un Date. Fíjate en el mes - 1: el mes va de 0 a 11
   const [anio, mes, dia] = valor.split("-").map(Number);
   const fecha = new Date(anio, mes - 1, dia);
+   const dias = diasHasta(fecha);
+  const nombreFecha = fecha.toLocaleDateString("es-ES", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric"
+  });
+
+  if (dias > 0) {
+    salida.textContent = dias === 1
+      ? `Falta 1 día: será ${nombreFecha}.`
+      : `Faltan ${dias} días: será ${nombreFecha}.`;
+  } else if (dias === 0) {
+    salida.textContent = `Es hoy: ${nombreFecha}.`;
+  } else {
+    const pasados = Math.abs(dias);
+    salida.textContent = pasados === 1
+      ? `Fue hace 1 día: ${nombreFecha}.`
+      : `Fue hace ${pasados} días: ${nombreFecha}.`;
+  }
+  console.log("Ejercicio 6: días hasta", valor, "→", dias);
 
   // TODO: con diasHasta(fecha), escribe en #salida6a «Faltan N días: será viernes, 25 de diciembre de 2026.»,
   //       «Es hoy…» o «Fue hace N días…». El nombre de la fecha, con toLocaleDateString("es-ES", {…}).
