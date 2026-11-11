@@ -290,8 +290,9 @@ class Alumno {
     return suma / this.notas.length;
   }
 
+
   presentarse() {
-    return `${this.nombre}, de ${this.curso}`;
+    return `${this.nombre()}, de ${this.curso}`;
   }
   // TODO: anadirNota(nota): si la nota no es un número (Number.isNaN) o no está entre 0 y 10, devuelve false;
   //       si es válida, la añade a this.notas y devuelve true.
@@ -301,11 +302,29 @@ class Alumno {
 }
 
 class AlumnoFCT extends Alumno {
+  constructor(nombre, curso, empresa) {
+    super(nombre, curso);
+    this.empresa = empresa;
+  }
+
+  presentarse() {
+    return `${super.presentarse()}, en prácticas en ${this.empresa}`;
+  }
   // TODO: constructor(nombre, curso, empresa): primero super(nombre, curso) y después guarda la empresa.
   // TODO: presentarse(): la frase de Alumno (super.presentarse()) más «, en prácticas en TecnoSur».
 }
 
 const alumnos = [];
+// Dos alumnos de partida, uno de cada clase, con dos notas cada uno
+const alumnoUno = new Alumno("Héctor García", "2.º DAW");
+alumnoUno.anadirNota(9);
+alumnoUno.anadirNota(7);
+
+const alumnoDos = new AlumnoFCT("Adrián Barbos", "2.º DAW", "Medac");
+alumnoDos.anadirNota(8);
+alumnoDos.anadirNota(6.5);
+
+alumnos.push(alumnoUno, alumnoDos)
 
 // TODO: cuando tengas las clases, crea aquí dos alumnos de partida y añádelos a alumnos con push:
 //       un Alumno con dos notas y un AlumnoFCT con otras dos.
