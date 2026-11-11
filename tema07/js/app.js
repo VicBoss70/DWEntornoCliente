@@ -59,6 +59,44 @@ function mostrarPrecio() {
   //       use el valor por defecto. Si no, comprueba que está entre 0 y 100 y pásaselo.
   // TODO: oculta el error y pinta el desglose en #salida1 con pintarLista():
   //       «Precio sin IVA: …», «Descuento: … %», «IVA: … %» y «Precio final: …» (con formatearEuros).
+  const textoBase = document.querySelector("#base").value.trim();
+  const iva = Number(document.querySelector("#iva").value);
+  const textoDescuento = document.querySelector("#descuento").value.trim();
+  const error = document.querySelector("#error1");
+
+  const base = Number(textoBase);
+  if (textoBase === "" || Number.isNaN(base) || base < 0) {
+    error.textContent = "Escribe un precio sin IVA que no sea negativo.";
+    error.classList.remove("d-none");
+    console.warn("Ejercicio 1: base no válida");
+    return;
+  }
+
+  let descuento = 0;
+  let precioFinal;
+
+  if (textoDescuento === "") {
+    // Sin tercer argumento se usa el descuento por defecto
+    precioFinal = calcularPrecio(base, iva);
+  } else {
+    descuento = Number(textoDescuento);
+    if (Number.isNaN(descuento) || descuento < 0 || descuento > 100) {
+      error.textContent = "El descuento tiene que estar entre 0 y 100.";
+      error.classList.remove("d-none");
+      console.warn("Ejercicio 1: descuento no válido");
+      return;
+    }
+    precioFinal = calcularPrecio(base, iva, descuento);
+  }
+
+  error.classList.add("d-none");
+  pintarLista("#salida1", [
+    `Precio sin IVA: ${formatearEuros(base)}`,
+    `Descuento: ${descuento} %`,
+    `IVA: ${iva} %`,
+    `Precio final: ${formatearEuros(precioFinal)}`
+  ]);
+  console.log("Ejercicio 1: precio final →", precioFinal);
 }
 
 
