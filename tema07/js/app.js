@@ -273,7 +273,26 @@ class Alumno {
     this.curso = curso;
     this.notas = [];
   }
+ anadirNota(nota) {
+    if (Number.isNaN(nota) || nota < 0 || nota > 10) {
+      return false;
+    }
+    this.notas.push(nota);
+    return true;
+  }
 
+  // Media de las notas con reduce; 0 si no hay ninguna
+  media() {
+    if (this.notas.length === 0) {
+      return 0;
+    }
+    const suma = this.notas.reduce((total, nota) => total + nota, 0);
+    return suma / this.notas.length;
+  }
+
+  presentarse() {
+    return `${this.nombre}, de ${this.curso}`;
+  }
   // TODO: anadirNota(nota): si la nota no es un número (Number.isNaN) o no está entre 0 y 10, devuelve false;
   //       si es válida, la añade a this.notas y devuelve true.
   // TODO: media(): 0 si no hay notas; si hay, la suma con reduce (con flecha) entre el número de notas.
