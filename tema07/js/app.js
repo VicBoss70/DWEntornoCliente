@@ -223,7 +223,12 @@ function crearContador(paso) {
   };
 }
 
-const contarDeUno = crearContador();
+let contador = 0;
+
+function contarDeUno() {
+  contador++;
+  return contador;
+}
 const contarDeCinco = crearContador(5);
 
 // El modelo
