@@ -183,7 +183,11 @@ document.querySelector("#numeros3").textContent = `const numeros = [${numeros.jo
 //       recorre lista con for…of, llama a operacion con cada elemento, guarda lo que devuelve
 //       en un array nuevo y, al final, devuelve ese array.
 function transformar(lista, operacion) {
-
+  const resultado = [];
+  for (const elemento of lista) {
+    resultado.push(operacion(elemento));
+  }
+  return resultado;
 }
 
 // Ya está hecha: escribe en #salida3 tu resultado, el de map y numeros
