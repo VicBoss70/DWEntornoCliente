@@ -377,6 +377,44 @@ function crearAlumno() {
   // TODO: si hay notas, sepáralas con split(",") y conviértelas con map((texto) => Number(texto.trim())).
   //       Si alguna no es válida (some), error en #error5 y no sigas. Si todas lo son, añádelas con anadirNota().
   // TODO: añade el alumno a alumnos, oculta el error, vacía las casillas y llama a pintarAlumnos().
+  const nombre = document.querySelector("#nombre5").value.trim();
+  const curso = document.querySelector("#curso5").value;
+  const empresa = document.querySelector("#empresa5").value.trim();
+  const textoNotas = document.querySelector("#notas5").value.trim();
+  const error = document.querySelector("#error5");
+
+  if (nombre === "") {
+    error.textContent = "Escribe el nombre del alumno.";
+    error.classList.remove("d-none");
+    console.warn("Ejercicio 5: falta el nombre");
+    return;
+  }
+
+  // Con empresa es un alumno en prácticas; sin ella, un alumno normal
+  const alumno = empresa === "" ? new Alumno(nombre, curso) : new AlumnoFCT(nombre, curso, empresa);
+
+  if (textoNotas !== "") {
+    // «7, 8.5, 6» → [7, 8.5, 6]; un trozo vacío se convierte en NaN para que cuente como no válido
+    const notas = textoNotas
+      .split(",")
+      .map((texto) => (texto.trim() === "" ? NaN : Number(texto.trim())));
+
+    if (notas.some((nota) => Number.isNaN(nota) || nota < 0 || nota > 10)) {
+      error.textContent = "Las notas tienen que ser números entre 0 y 10, separados por comas.";
+      error.classList.remove("d-none");
+      console.warn("Ejercicio 5: alguna nota no es válida", notas);
+      return;
+    }
+    notas.forEach((nota) => alumno.anadirNota(nota));
+  }
+
+  alumnos.push(alumno);
+  error.classList.add("d-none");
+  document.querySelector("#nombre5").value = "";
+  document.querySelector("#empresa5").value = "";
+  document.querySelector("#notas5").value = "";
+  pintarAlumnos();
+  console.log("Ejercicio 5: alumno creado →", alumno.presentarse());
 }
 
 pintarAlumnos();
