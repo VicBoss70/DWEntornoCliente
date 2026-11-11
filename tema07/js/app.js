@@ -156,6 +156,19 @@ function buscarAntigua() {
   // TODO: el callback nuevo, ya con flecha: con find(), la primera película anterior a 1990.
   // TODO: find devuelve undefined si no hay ninguna: dilo en #mensaje2 y vacía la lista.
   //       Si la encuentra, píntala con pintarLista("#salida2", [comoTexto(antigua)]).
+  const antigua = peliculas.find((pelicula) => pelicula.anio < 1990);
+  const mensaje = document.querySelector("#mensaje2");
+
+  // find devuelve undefined si no encuentra ninguna
+  if (antigua === undefined) {
+    mensaje.textContent = "No hay ninguna película anterior a 1990.";
+    pintarLista("#salida2", []);
+    console.log("Ejercicio 2: find no ha encontrado nada");
+  } else {
+    mensaje.textContent = "La primera película anterior a 1990:";
+    pintarLista("#salida2", [comoTexto(antigua)]);
+    console.log("Ejercicio 2: find →", antigua);
+  }
 }
 
 
