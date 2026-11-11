@@ -16,10 +16,6 @@
 console.log("app.js cargado");
 
 
-// ============================================================
-// Ayuda: pinta una lista de textos en un <ul class="list-group">
-// (ya está hecha, y su forEach ya lleva una flecha: es el modelo)
-// ============================================================
 
 function pintarLista(selector, textos) {
   const lista = document.querySelector(selector);
@@ -38,10 +34,6 @@ function pintarLista(selector, textos) {
 // Ejercicio 1 · Precio final
 // ============================================================
 
-// TODO: calcularPrecio(base, iva, descuento) devuelve el precio final con return. No lee ni pinta nada.
-//       iva vale 21 por defecto y descuento, 0 por defecto (parámetros por defecto).
-//       Primero se resta el descuento (un tanto por ciento de la base) y después se suma el IVA.
-//       Comprueba en la consola: calcularPrecio(100) tiene que dar 121.
 function calcularPrecio(base, iva, descuento) {
   const conDescuento = base - (base * descuento) / 100;
   return conDescuento + (conDescuento * iva) / 100;
@@ -53,12 +45,7 @@ function formatearEuros(cantidad) {
 }
 
 function mostrarPrecio() {
-  // TODO: lee #base, #iva y #descuento (value). El IVA conviértelo con Number().
-  // TODO: si la base está vacía o es negativa, error en #error1 (quítale "d-none") y no sigas.
-  // TODO: si el descuento está vacío, llama a calcularPrecio(base, iva), sin el tercer argumento, para que se
-  //       use el valor por defecto. Si no, comprueba que está entre 0 y 100 y pásaselo.
-  // TODO: oculta el error y pinta el desglose en #salida1 con pintarLista():
-  //       «Precio sin IVA: …», «Descuento: … %», «IVA: … %» y «Precio final: …» (con formatearEuros).
+
   const textoBase = document.querySelector("#base").value.trim();
   const iva = Number(document.querySelector("#iva").value);
   const textoDescuento = document.querySelector("#descuento").value.trim();
@@ -118,9 +105,7 @@ function comoTexto(pelicula) {
   return `${pelicula.titulo} (${pelicula.anio}) · ${pelicula.duracion} min`;
 }
 
-// Las cuatro funciones siguientes ya funcionan, pero sus callbacks están escritos con function, como en el tema 6.
-// TODO: pasa a flecha los cuatro callbacks (map, filter, sort y reduce). Si el cuerpo es solo una expresión,
-//       sin llaves ni return. Comprueba después que cada botón sigue dando lo mismo.
+
 
 function verTitulos() {
   const titulos = peliculas.map ((pelicula) => pelicula.titulo); 
@@ -153,9 +138,7 @@ function verDuracionTotal() {
 }
 
 function buscarAntigua() {
-  // TODO: el callback nuevo, ya con flecha: con find(), la primera película anterior a 1990.
-  // TODO: find devuelve undefined si no hay ninguna: dilo en #mensaje2 y vacía la lista.
-  //       Si la encuentra, píntala con pintarLista("#salida2", [comoTexto(antigua)]).
+
   const antigua = peliculas.find((pelicula) => pelicula.anio < 1990);
   const mensaje = document.querySelector("#mensaje2");
 
@@ -179,9 +162,7 @@ function buscarAntigua() {
 const numeros = [3, -1, 4, -1, 5, 9];
 document.querySelector("#numeros3").textContent = `const numeros = [${numeros.join(", ")}];`;
 
-// TODO: transformar(lista, operacion) hace a mano lo que hace map, sin usar map:
-//       recorre lista con for…of, llama a operacion con cada elemento, guarda lo que devuelve
-//       en un array nuevo y, al final, devuelve ese array.
+
 function transformar(lista, operacion) {
   const resultado = [];
   for (const elemento of lista) {
@@ -222,8 +203,7 @@ function verCuadrados() {
 }
 
 function verAbsolutos() {
-  // TODO: como verDobles(), con el valor absoluto (Math.abs). Pista: Math.abs ya es una función,
-  //       así que se puede pasar tal cual, sin paréntesis.
+
     const resultado = transformar(numeros, Math.abs);
   mostrar3("absolutos", resultado, numeros.map(Math.abs));
   console.log("Ejercicio 3: absolutos →", resultado);
@@ -234,9 +214,7 @@ function verAbsolutos() {
 // Ejercicio 4 · Dos contadores con closure
 // ============================================================
 
-// TODO: crearContador(paso) guarda una variable cuenta que empieza en 0 y DEVUELVE una función.
-//       Cada vez que se llama a esa función, suma paso a cuenta y devuelve el valor nuevo.
-//       paso vale 1 por defecto.
+
 function crearContador(paso) {
   let cuenta = 0;
   return () => {
@@ -294,11 +272,7 @@ class Alumno {
   presentarse() {
     return `${this.nombre()}, de ${this.curso}`;
   }
-  // TODO: anadirNota(nota): si la nota no es un número (Number.isNaN) o no está entre 0 y 10, devuelve false;
-  //       si es válida, la añade a this.notas y devuelve true.
-  // TODO: media(): 0 si no hay notas; si hay, la suma con reduce (con flecha) entre el número de notas.
-  // TODO: presentarse(): devuelve «Lucía Martín, de 2.º DAW».
-  //       Recuerda: en una clase, los métodos van sin function y sin comas entre ellos.
+
 }
 
 class AlumnoFCT extends Alumno {
@@ -310,8 +284,7 @@ class AlumnoFCT extends Alumno {
   presentarse() {
     return `${super.presentarse()}, en prácticas en ${this.empresa}`;
   }
-  // TODO: constructor(nombre, curso, empresa): primero super(nombre, curso) y después guarda la empresa.
-  // TODO: presentarse(): la frase de Alumno (super.presentarse()) más «, en prácticas en TecnoSur».
+
 }
 
 const alumnos = [];
@@ -327,9 +300,7 @@ alumnoDos.anadirNota(6.5);
 alumnos.push(alumnoUno, alumnoDos)
 
 // TODO: cuando tengas las clases, crea aquí dos alumnos de partida y añádelos a alumnos con push:
-//       un Alumno con dos notas y un AlumnoFCT con otras dos.
 
-// Ya está hecha: pinta una tarjeta por alumno en #listaAlumnos y actualiza #totalAlumnos
 function pintarAlumnos() {
   const contenedor = document.querySelector("#listaAlumnos");
   contenedor.textContent = "";
@@ -372,11 +343,7 @@ function pintarAlumnos() {
 }
 
 function crearAlumno() {
-  // TODO: lee #nombre5, #curso5, #empresa5 y #notas5 (value y trim). Si el nombre está vacío, error en #error5.
-  // TODO: si la empresa está vacía, crea un Alumno con new; si no, un AlumnoFCT.
-  // TODO: si hay notas, sepáralas con split(",") y conviértelas con map((texto) => Number(texto.trim())).
-  //       Si alguna no es válida (some), error en #error5 y no sigas. Si todas lo son, añádelas con anadirNota().
-  // TODO: añade el alumno a alumnos, oculta el error, vacía las casillas y llama a pintarAlumnos().
+
   const nombre = document.querySelector("#nombre5").value.trim();
   const curso = document.querySelector("#curso5").value;
   const empresa = document.querySelector("#empresa5").value.trim();
@@ -424,9 +391,7 @@ pintarAlumnos();
 // Ejercicio 6 · Fechas y textos
 // ============================================================
 
-// TODO: diasHasta(fecha) devuelve cuántos días faltan desde hoy hasta fecha (negativo si ya pasó).
-//       Pon hoy a medianoche (hoy.setHours(0, 0, 0, 0)), resta las fechas, divide entre los milisegundos
-//       de un día y redondea con Math.round: con el cambio de hora, la resta no siempre da un número entero.
+
 function diasHasta(fecha) {
   const hoy = new Date();
   hoy.setHours(0, 0, 0, 0);
@@ -470,13 +435,10 @@ function mostrarDias() {
   }
   console.log("Ejercicio 6: días hasta", valor, "→", dias);
 
-  // TODO: con diasHasta(fecha), escribe en #salida6a «Faltan N días: será viernes, 25 de diciembre de 2026.»,
-  //       «Es hoy…» o «Fue hace N días…». El nombre de la fecha, con toLocaleDateString("es-ES", {…}).
+
 }
 
-// TODO: iniciales(nombreCompleto) devuelve las iniciales en mayúsculas: «lucía martín ortega» → «LMO».
-//       Encadena trim, split(" "), filter (para quitar las palabras vacías si hay espacios dobles),
-//       map (la primera letra de cada palabra, en mayúscula) y join("").
+
 function iniciales(nombreCompleto) {
   return nombreCompleto
     .trim()
@@ -486,8 +448,7 @@ function iniciales(nombreCompleto) {
     .join("");
 }
 
-// TODO: crearUsuario(nombreCompleto) devuelve las iniciales en minúsculas y tres cifras al azar, de 000 a 999:
-//       «lmo042». Pista: Math.random, Math.floor y padStart(3, "0").
+
 function crearUsuario(nombreCompleto) {
   const azar = Math.floor(Math.random() * 1000);
   return iniciales(nombreCompleto).toLowerCase() + String(azar).padStart(3, "0");
@@ -505,6 +466,5 @@ function mostrarIniciales() {
 
   salida.textContent = `Iniciales: ${iniciales(nombre)} · usuario: ${crearUsuario(nombre)}`;
   console.log("Ejercicio 6: iniciales de", nombre, "→", iniciales(nombre));
-  // TODO: lee #nombre6. Si está vacío, avisa en #salida6b.
-  // TODO: si no, escribe en #salida6b «Iniciales: LMO · usuario: lmo042».
+
 }
