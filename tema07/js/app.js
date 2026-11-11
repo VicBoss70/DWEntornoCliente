@@ -494,6 +494,17 @@ function crearUsuario(nombreCompleto) {
 }
 
 function mostrarIniciales() {
+   const nombre = document.querySelector("#nombre6").value.trim();
+  const salida = document.querySelector("#salida6b");
+
+  if (nombre === "") {
+    salida.textContent = "Escribe un nombre completo.";
+    console.warn("Ejercicio 6: nombre vacío");
+    return;
+  }
+
+  salida.textContent = `Iniciales: ${iniciales(nombre)} · usuario: ${crearUsuario(nombre)}`;
+  console.log("Ejercicio 6: iniciales de", nombre, "→", iniciales(nombre));
   // TODO: lee #nombre6. Si está vacío, avisa en #salida6b.
   // TODO: si no, escribe en #salida6b «Iniciales: LMO · usuario: lmo042».
 }
