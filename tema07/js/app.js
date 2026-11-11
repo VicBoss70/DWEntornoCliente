@@ -238,7 +238,11 @@ function verAbsolutos() {
 //       Cada vez que se llama a esa función, suma paso a cuenta y devuelve el valor nuevo.
 //       paso vale 1 por defecto.
 function crearContador(paso) {
-
+  let cuenta = 0;
+  return () => {
+    cuenta += paso;
+    return cuenta;
+  };
 }
 
 const contarDeUno = crearContador();
