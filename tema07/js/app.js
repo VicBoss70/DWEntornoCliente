@@ -1,5 +1,5 @@
 /*
-  Tarea 7 · DWEC · [Tu nombre y apellidos]
+  Tarea 7 · DWEC · [Hector Sascha Garcia Rodriguez]
   Funciones, flechas y clases.
 
   Cómo usar esta plantilla:
